@@ -1,0 +1,63 @@
+<div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-6 w-full min-w-0 relative">
+    <div class="col-span-12 flex flex-row justify-between items-center">
+        <h4 class="font-bold leading-tight text-4xl">Academic Sessions</h4>
+        <button
+            class="fuse-mat-button-normal"
+            mat-flat-button
+            [color]="'primary'"
+            (click)="createNewAcademicSession()">
+            <mat-icon svgIcon="add"></mat-icon>
+            <span class="ml-4">
+                New Session
+            </span>
+        </button>
+    </div>
+
+    <div class="col-span-12 p-0 bg-card shadow rounded-2xl overflow-hidden">
+        <mat-table [dataSource]="dataSource" class="border-0">
+
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+                <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+                <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row (click)="editAcademicSession()" matRipple *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+
+    </div>
+
+</div>
+
+<!-- <fuse-drawer
+    [fixed]="true"
+    [mode]="'over'"
+    [name]="'rightDrawer'"
+    [opened]="true"
+    [position]="'right'"
+    [transparentOverlay]="true">
+</fuse-drawer> -->

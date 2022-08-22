@@ -1,0 +1,98 @@
+<div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-6 w-full min-w-0 relative">
+    <div class="col-span-12 flex flex-row justify-between items-center">
+        <h4 class="font-bold leading-tight text-4xl m-0">Transactions</h4>
+
+        <div class="w-100">
+            <mat-form-field appearance="standard" class="w-full">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Filter by any column" class="w-full" #input>
+            </mat-form-field>
+        </div>
+        <!-- <button
+            class="fuse-mat-button-normal"
+            mat-flat-button
+            [color]="'primary'"
+            (click)="createNewAcademicSession()">
+            <mat-icon svgIcon="add"></mat-icon>
+            <span class="ml-4">
+                New Session
+            </span>
+        </button> -->
+    </div>
+
+    <div class="col-span-12 p-0 bg-card shadow rounded-2xl overflow-hidden">
+        <mat-table [dataSource]="dataSource" class="border-0" matSort>
+
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Serial No. Column -->
+            <!-- <ng-container matColumnDef="serialNo">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.serialNo}} </mat-cell>
+            </ng-container> -->
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.name}} </mat-cell>
+            </ng-container>
+
+            <!-- Department Column -->
+            <ng-container matColumnDef="department">
+                <mat-header-cell *matHeaderCellDef> Department </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.department}} </mat-cell>
+            </ng-container>
+
+            <!-- Matric No. Column -->
+            <ng-container matColumnDef="matricNo">
+                <mat-header-cell *matHeaderCellDef> Matric No </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.matricNo}} </mat-cell>
+            </ng-container>
+
+            <!-- Reference ID Column -->
+            <ng-container matColumnDef="refId">
+                <mat-header-cell *matHeaderCellDef> Ref ID </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.refId}} </mat-cell>
+            </ng-container>
+
+            <!-- Payment Code Column -->
+            <!-- <ng-container matColumnDef="paymentCode">
+                <mat-header-cell *matHeaderCellDef> Payment Code </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.paymentCode}} </mat-cell>
+            </ng-container> -->
+
+            <!-- Item Column -->
+            <ng-container matColumnDef="item">
+                <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.item}} </mat-cell>
+            </ng-container>
+
+            <!-- Date Column -->
+            <ng-container matColumnDef="dateTime">
+                <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.dateTime | date:"mediumDate"}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row (click)="editAcademicSession()" matRipple *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of transactions">
+        </mat-paginator>
+
+    </div>
+
+</div>
+
+<!-- <fuse-drawer
+    [fixed]="true"
+    [mode]="'over'"
+    [name]="'rightDrawer'"
+    [opened]="true"
+    [position]="'right'"
+    [transparentOverlay]="true">
+</fuse-drawer> -->
